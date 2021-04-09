@@ -104,6 +104,7 @@ namespace TalentPool.EntityFrameworkCore.Queriers
                             JobId = a.JobId,
                             JobName = c.Title,
                             PhoneNumber = a.PhoneNumber,
+                            ExtensionNumber = a.ExtensionNumber,
                             CreationTime = a.CreationTime,
                             CreatorUserId = a.CreatorUserId,
                             CreatorUserName = d.FullName,

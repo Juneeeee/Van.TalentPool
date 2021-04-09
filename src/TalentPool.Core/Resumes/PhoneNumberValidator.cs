@@ -11,9 +11,14 @@ namespace TalentPool.Resumes
                 throw new ArgumentNullException(nameof(resume));
             if (string.IsNullOrEmpty(resume.PhoneNumber))
                 return;
-            var owner = await manager.FindByPhoneNumberAsync(resume.PhoneNumber);
+            var owner = await manager.FindByPhoneNumberAsync(resume.PhoneNumber, resume.ExtensionNumber);
             if (owner != null && owner.Id != resume.Id)
-                throw new InvalidOperationException($"该手机号码的简历已存在，简历ID：{owner.Id}。");
+            {
+                if (string.IsNullOrEmpty(resume.ExtensionNumber))
+                    throw new InvalidOperationException($"{resume.PhoneNumber}的简历已存在，简历ID：{owner.Id}。");
+                else
+                    throw new InvalidOperationException($"{resume.PhoneNumber} 分机号{resume.ExtensionNumber} 的简历已存在，简历ID：{owner.Id}。");
+            }
         }
     }
 }

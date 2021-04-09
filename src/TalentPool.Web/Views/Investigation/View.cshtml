@@ -20,144 +20,149 @@
             主动投递
         </div>
     </div>}
-        <div class="row"> 
-            <div class="form-group col-md-6">
-                <label>姓名</label>
-                <input type="text" class="form-control" readonly asp-for="Name">
-            </div>
-            <div class="form-group col-md-6">
-                <label>手机号</label>
-                <input type="text" class="form-control" asp-for="PhoneNumber" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label>邮箱地址</label>
-                <input type="text" class="form-control" asp-for="Email" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label>职位</label> 
-                <div class="input-group">
-                    <input type="text" class="form-control" asp-for="JobName" readonly>
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default" title="岗位说明">
-                            <i class="fas fa-question-circle"></i>
-                        </button>
-                    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>姓名</label>
+            <input type="text" class="form-control" readonly asp-for="Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label>职位</label>
+            <div class="input-group">
+                <input type="text" class="form-control" asp-for="JobName" readonly>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default" title="岗位说明">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
                 </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label>调查时间<small>（日报告统计的日期）</small></label>
-                <input type="text" class="form-control" asp-for="InvestigateDate" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label>是否接通电话</label>
-                @if (Model.IsConnected.HasValue && Model.IsConnected.Value)
-                {
-    <input type="text" class="form-control" value="已接" readonly> }
-                else
-                {
-    <input type="text" class="form-control" value="未接" readonly>}
-            </div>
-            <div class="form-group col-md-6">
-                <label>未接通电话的情况备注</label>
-                <div class="form-group">
-                    <input type="text" asp-for="UnconnectedRemark" class="form-control" readonly>
-                </div>
-            </div>
-            <div class="form-group col-md-6">
-                <label>工作状态</label>
-                <input type="text" class="form-control" value="@Model.WorkState.GetDescription()" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label>期望薪资</label>
-                <input type="text" class="form-control" readonly asp-for="ExpectedSalary">
-            </div>
-            <div class="form-group col-md-6">
-                <label>出差意愿</label>
-                <input type="text" class="form-control" value="@Model.AcceptTravelStatus.GetDescription()" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label>意愿备注</label>
-                <input type="text" class="form-control" readonly asp-for="NotAcceptTravelReason">
-            </div>
-
-            <div class="form-group col-md-6">
-                <label>居住地</label>
-                <input type="text" class="form-control" readonly asp-for="CityOfResidence">
-            </div>
-            <div class="form-group col-md-6">
-                <label>户籍所在地</label>
-                <input type="text" class="form-control" readonly asp-for="CityOfDomicile">
-            </div>
-            <div class="form-group col-md-6">
-                <label>可入职时间</label>
-                <input type="text" class="form-control" readonly asp-for="ExpectedDate">
-            </div>
-            <div class="form-group col-md-6">
-                <label>是否接受现场面试</label>
-                @if (Model.IsAcceptInterview.HasValue && Model.IsAcceptInterview.Value)
-                {
-    <input type="text" class="form-control" value="接受" readonly> }
-                else
-                {
-    <input type="text" class="form-control" value="不接受" readonly>}
-            </div>
-            <div class="form-group col-md-6">
-                <label>可面试时间</label>
-                <input type="text" class="form-control" readonly asp-for="ExpectedInterviewDate">
-            </div>
-            <div class="form-group col-md-6">
-                <label>可电话面试时间</label>
-                <input type="text" class="form-control" readonly asp-for="ExpectedPhoneInterviewDate">
-            </div>
-
-            <div class="form-group col-md-12">
-                <label>意向调查表</label>
-                <textarea asp-for="Information" readonly></textarea>
-            </div>
-            <div class="form-group col-md-12">
-                <label>技术评测</label>
-                <textarea asp-for="Evaluation" readonly></textarea>
-            </div>
-            <div class="form-group col-md-6">
-                <label>是否合适</label>
-                @if (Model.IsQualified.HasValue)
-                {
-                    if (Model.IsQualified.Value)
-                    {
-    <input type="text" class="form-control" value="合适" readonly> }
-                    else
-                    {
-    <input type="text" class="form-control" value="不合适" readonly> }
-                }
-                else
-                {
-    <input type="text" class="form-control" value="" readonly>}
-            </div>
-            <div class="form-group col-md-6">
-                <label>不合适原因</label>
-                <input type="text" class="form-control" asp-for="QualifiedRemark" readonly />
-            </div>
-            <div class="form-group col-md-6">
-                <label>创建时间</label>
-                <input type="text" class="form-control" readonly asp-for="CreationTime">
-            </div>
-            <div class="form-group col-md-6">
-                <label>创建人</label>
-                <input type="text" class="form-control" readonly asp-for="CreatorUserName">
-            </div>
-            <div class="form-group col-md-6">
-                <label>最后更新时间</label>
-                <input type="text" class="form-control" readonly asp-for="LastModificationTime">
-            </div>
-            <div class="form-group col-md-6">
-                <label>最后更新人</label>
-                <input type="text" class="form-control" readonly asp-for="LastModifierUserName">
-            </div>
-            <div class="form-group col-md-6">
-                <label>处理人</label>
-                <input type="text" class="form-control" readonly asp-for="OwnerUserName">
             </div>
         </div>
+        <div class="form-group col-md-6">
+            <label>手机号</label>
+            <input type="text" class="form-control" asp-for="PhoneNumber" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label>分机号</label>
+            <input type="text" class="form-control" asp-for="ExtensionNumber" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label>邮箱地址</label>
+            <input type="text" class="form-control" asp-for="Email" readonly>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>调查时间<small>（日报告统计的日期）</small></label>
+            <input type="text" class="form-control" asp-for="InvestigateDate" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label>是否接通电话</label>
+            @if (Model.IsConnected.HasValue && Model.IsConnected.Value)
+            {
+                <input type="text" class="form-control" value="已接" readonly> }
+            else
+            {
+                <input type="text" class="form-control" value="未接" readonly>}
+        </div>
+        <div class="form-group col-md-6">
+            <label>未接通电话的情况备注</label>
+            <div class="form-group">
+                <input type="text" asp-for="UnconnectedRemark" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>工作状态</label>
+            <input type="text" class="form-control" value="@Model.WorkState.GetDescription()" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label>期望薪资</label>
+            <input type="text" class="form-control" readonly asp-for="ExpectedSalary">
+        </div>
+        <div class="form-group col-md-6">
+            <label>出差意愿</label>
+            <input type="text" class="form-control" value="@Model.AcceptTravelStatus.GetDescription()" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label>意愿备注</label>
+            <input type="text" class="form-control" readonly asp-for="NotAcceptTravelReason">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>居住地</label>
+            <input type="text" class="form-control" readonly asp-for="CityOfResidence">
+        </div>
+        <div class="form-group col-md-6">
+            <label>户籍所在地</label>
+            <input type="text" class="form-control" readonly asp-for="CityOfDomicile">
+        </div>
+        <div class="form-group col-md-6">
+            <label>可入职时间</label>
+            <input type="text" class="form-control" readonly asp-for="ExpectedDate">
+        </div>
+        <div class="form-group col-md-6">
+            <label>是否接受现场面试</label>
+            @if (Model.IsAcceptInterview.HasValue && Model.IsAcceptInterview.Value)
+            {
+                <input type="text" class="form-control" value="接受" readonly> }
+            else
+            {
+                <input type="text" class="form-control" value="不接受" readonly>}
+        </div>
+        <div class="form-group col-md-6">
+            <label>可面试时间</label>
+            <input type="text" class="form-control" readonly asp-for="ExpectedInterviewDate">
+        </div>
+        <div class="form-group col-md-6">
+            <label>可电话面试时间</label>
+            <input type="text" class="form-control" readonly asp-for="ExpectedPhoneInterviewDate">
+        </div>
+
+        <div class="form-group col-md-12">
+            <label>意向调查表</label>
+            <textarea asp-for="Information" readonly></textarea>
+        </div>
+        <div class="form-group col-md-12">
+            <label>技术评测</label>
+            <textarea asp-for="Evaluation" readonly></textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <label>是否合适</label>
+            @if (Model.IsQualified.HasValue)
+            {
+                if (Model.IsQualified.Value)
+                {
+                    <input type="text" class="form-control" value="合适" readonly> }
+                else
+                {
+                    <input type="text" class="form-control" value="不合适" readonly> }
+            }
+            else
+            {
+                <input type="text" class="form-control" value="" readonly>}
+        </div>
+        <div class="form-group col-md-6">
+            <label>不合适原因</label>
+            <input type="text" class="form-control" asp-for="QualifiedRemark" readonly />
+        </div>
+        <div class="form-group col-md-6">
+            <label>创建时间</label>
+            <input type="text" class="form-control" readonly asp-for="CreationTime">
+        </div>
+        <div class="form-group col-md-6">
+            <label>创建人</label>
+            <input type="text" class="form-control" readonly asp-for="CreatorUserName">
+        </div>
+        <div class="form-group col-md-6">
+            <label>最后更新时间</label>
+            <input type="text" class="form-control" readonly asp-for="LastModificationTime">
+        </div>
+        <div class="form-group col-md-6">
+            <label>最后更新人</label>
+            <input type="text" class="form-control" readonly asp-for="LastModifierUserName">
+        </div>
+        <div class="form-group col-md-6">
+            <label>处理人</label>
+            <input type="text" class="form-control" readonly asp-for="OwnerUserName">
+        </div>
+    </div>
     </div>
     <div class="card-footer">
         <div class="row ">

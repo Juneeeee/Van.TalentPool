@@ -31,6 +31,10 @@ namespace TalentPool.Web.Models.ResumeViewModels
 
         [RegularExpression(@"1[\d]{10}",ErrorMessage ="请输入正确的手机号码")]
         public string PhoneNumber { get; set; }
+        [RegularExpression(@"[\d]*", ErrorMessage = "请输入正确的分机号码")]
+        public string ExtensionNumber { get; set; }
+
+
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string Description { get; set; }

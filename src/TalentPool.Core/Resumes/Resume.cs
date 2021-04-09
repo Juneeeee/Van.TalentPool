@@ -26,6 +26,10 @@ namespace TalentPool.Resumes
         /// </summary>
         public virtual string PhoneNumber { get; set; }
         /// <summary>
+        /// 分机号
+        /// </summary>
+        public virtual string ExtensionNumber { get; set; }
+        /// <summary>
         /// 邮箱
         /// </summary>
         public virtual string Email { get; set; }

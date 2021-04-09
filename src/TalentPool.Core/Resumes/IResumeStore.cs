@@ -8,7 +8,7 @@ namespace TalentPool.Resumes
     public interface IResumeStore : IDisposable
     {
         Task<Resume> FindByIdAsync(Guid resumeId, CancellationToken cancellationToken);
-        Task<Resume> FindByPhoneNumberAsync(string phoneNumber, CancellationToken cancellationToken);
+        Task<Resume> FindByPhoneNumberAsync(string phoneNumber, string extensionNumber , CancellationToken cancellationToken);
         Task<Resume> FindByPlatformAsync(string platformId, CancellationToken cancellationToken);
         Task<Resume> CreateAsync(Resume resume, CancellationToken cancellationToken);
         Task<Resume> UpdateAsync(Resume resume, CancellationToken cancellationToken);

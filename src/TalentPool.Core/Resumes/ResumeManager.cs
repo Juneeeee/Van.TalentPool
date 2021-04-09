@@ -82,12 +82,12 @@ namespace TalentPool.Resumes
 
             return await ResumeStore.FindByIdAsync(resumeId, CancellationToken);
         }
-        public async Task<Resume> FindByPhoneNumberAsync(string phoneNumber)
+        public async Task<Resume> FindByPhoneNumberAsync(string phoneNumber, string extensionNumber = "")
         {
             if (phoneNumber == null)
                 throw new ArgumentNullException(nameof(phoneNumber));
 
-            return await ResumeStore.FindByPhoneNumberAsync(phoneNumber, CancellationToken);
+            return await ResumeStore.FindByPhoneNumberAsync(phoneNumber, extensionNumber, CancellationToken);
         }
         public async Task<Resume> FindByPlatformAsync(string platformId)
         {

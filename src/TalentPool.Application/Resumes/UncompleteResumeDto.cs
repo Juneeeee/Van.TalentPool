@@ -6,12 +6,12 @@ namespace TalentPool.Application.Resumes
     public class UncompleteResumeDto
     {
         public Guid Id { get; set; }
-        public string PlatformName { get; set; }
-        public string PlatformId { get; set; }
         public string Name { get; set; }
         public Guid JobId { get; set; }
         public string JobName { get; set; }
-        public string PhoneNumber { get; set; }
+        public virtual bool? IsConnected { get; set; }
+        public virtual AcceptTravelStatus? AcceptTravelStatus { get; set; }
+        public virtual string ExpectedInterviewDate { get; set; }
         public DateTime CreationTime { get; set; }
         public Guid OwnerUserId { get; set; }
         public string OwnerUserName { get; set; }

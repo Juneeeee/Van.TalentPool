@@ -268,9 +268,8 @@
                         <tr>
                             <th>姓名</th>
                             <th>职位</th>
-                            <th>来源平台</th>
-                            <th>平台ID</th>
-                            <th>手机号</th>
+                            <th>出差意愿</th>
+                            <th>面试时间</th>
                             <th>当前调查日期</th>
                             <th>状态</th>
                             <th>处理人</th>
@@ -285,17 +284,11 @@
                                 <tr>
                                     <td>
                                         @item.Name
-                                        @if (item.InvestigationDate.HasValue)
+                                        @if (item.Status.HasValue && item.Status == InvestigationStatus.Ongoing && (!item.IsConnected.HasValue || !item.IsConnected.Value))
                                         {
-                                            var days = (DateTime.Now.Date - item.InvestigationDate.Value.Date).TotalDays;
-                                            if (days == 1)
-                                            {
-                                                <span class="badge badge-warning" title="未完成调查任务，请继续跟进！" data-toggle="tooltip" data-placement="top">待跟进</span>
-                                            }
-                                            else if (days > 1)
-                                            {
-                                                <span class="badge badge-danger" title="未完成调查任务，你有 @days 天未跟进！" data-toggle="tooltip" data-placement="top">待跟进</span>
-                                            }
+                                            <small class="badge badge-secondary" title="电话一直未接通" data-toggle="tooltip" data-placement="top">
+                                                未接
+                                            </small>
                                         }
                                         @if (item.AppointmentTime.HasValue && item.AppointmentType.HasValue)
                                         {
@@ -310,26 +303,27 @@
                                                 }
                                                 @if (item.AppointmentTime.Value < DateTime.Now)
                                                 {
-                                                    <text>已过期</text>
+                                                    <text>预约已过期</text>
                                                 }
                                             </small>
                                         }
 
                                     </td>
                                     <td>@item.JobName</td>
-                                    <td>@item.PlatformName</td>
-                                    <td onclick="onCopy(this,'@item.PlatformId')" title="单击本区域，可复制平台ID" data-toggle="tooltip" data-placement="top">@item.PlatformId</td>
-                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.AcceptTravelStatus?.GetDescription()</td>
+                                    <td>@item.ExpectedInterviewDate</td>
                                     <td>
                                         @item.InvestigationDate?.Date.ToShortDateString()
                                     </td>
                                     <td>
-                                        @if (!item.Status.HasValue)
+                                        @if (!item.Status.HasValue || item.Status == InvestigationStatus.NoStart)
                                         {
-                                            <span class="badge badge-secondary">未开始</span> }
+                                            <span class="badge badge-secondary">未开始</span> 
+                                            }
                                         else if (item.Status.HasValue && item.Status != InvestigationStatus.Complete)
                                         {
-                                            <span class="badge badge-info">进行中</span>}
+                                            <span class="badge badge-info">进行中</span>
+                                            }
                                     </td>
                                     <td>
                                         @item.OwnerUserName

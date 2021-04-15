@@ -9,6 +9,7 @@ namespace TalentPool.Application.Investigations
         public string Name { get; set; }
         public Guid ResumeId { get; set; }
         public string PhoneNumber { get; set; }
+        public string ExtensionNumber { get; set; }
         public string Email { get; set; }
         public Guid JobId { get; set; }
         public string JobName { get; set; }

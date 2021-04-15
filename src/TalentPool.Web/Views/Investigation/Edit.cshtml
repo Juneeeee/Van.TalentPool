@@ -30,19 +30,6 @@
                         <input type="text" class="form-control" readonly asp-for="Name">
                     </div>
                     <div class="form-group col-md-6">
-                        <label>手机号</label>
-                        <input type="text" class="form-control" readonly asp-for="PhoneNumber">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>邮箱地址</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" asp-for="Email" readonly>
-                            <div class="input-group-append">
-                                @await Html.PartialAsync("Partials/_ActionPartial", new ActionViewModel("", "/Resume/SendEmail/" + Model.ResumeId, Pages.Resume_SendEmail, "btn btn-sm btn-default", "fas fa-envelope", blank: true))
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
                         <label>职位</label>
                         <div class="input-group">
                             <input type="text" class="form-control" asp-for="JobName" readonly>
@@ -53,6 +40,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>手机号</label>
+                        <input type="text" class="form-control" readonly asp-for="PhoneNumber">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>分机号</label>
+                        <input type="text" class="form-control" readonly asp-for="ExtensionNumber">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>邮箱地址</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" asp-for="Email" readonly>
+                            <div class="input-group-append">
+                                @await Html.PartialAsync("Partials/_ActionPartial", new ActionViewModel("", "/Resume/SendEmail/" + Model.ResumeId, Pages.Resume_SendEmail, "btn btn-sm btn-default", "fas fa-envelope", blank: true))
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </fieldset>
 

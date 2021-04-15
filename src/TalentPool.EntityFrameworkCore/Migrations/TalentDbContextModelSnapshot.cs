@@ -426,6 +426,12 @@ namespace TalentPool.EntityFrameworkCore.Migrations
                     b.Property<sbyte?>("AcceptTravelStatus")
                         .HasColumnType("tinyint");
 
+                    b.Property<DateTime?>("AppointmentTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("AppointmentType")
+                        .HasColumnType("int");
+
                     b.Property<string>("CityOfDomicile")
                         .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
@@ -451,9 +457,6 @@ namespace TalentPool.EntityFrameworkCore.Migrations
 
                     b.Property<string>("Evaluation")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime?>("EvaluationTime")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExpectedDate")
                         .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
@@ -625,6 +628,10 @@ namespace TalentPool.EntityFrameworkCore.Migrations
                         .HasColumnType("varchar(128) CHARACTER SET utf8mb4")
                         .HasMaxLength(128);
 
+                    b.Property<string>("ExtensionNumber")
+                        .HasColumnType("varchar(8) CHARACTER SET utf8mb4")
+                        .HasMaxLength(8);
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
@@ -687,7 +694,7 @@ namespace TalentPool.EntityFrameworkCore.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4")
                         .HasMaxLength(2048);
 
-                    b.Property<Guid?>("ResumeId")
+                    b.Property<Guid>("ResumeId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -1066,7 +1073,9 @@ namespace TalentPool.EntityFrameworkCore.Migrations
                 {
                     b.HasOne("TalentPool.Resumes.Resume", null)
                         .WithMany("Attachments")
-                        .HasForeignKey("ResumeId");
+                        .HasForeignKey("ResumeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TalentPool.Resumes.ResumeAuditRecord", b =>

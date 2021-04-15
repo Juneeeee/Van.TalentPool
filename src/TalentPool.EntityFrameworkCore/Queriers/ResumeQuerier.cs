@@ -104,6 +104,7 @@ namespace TalentPool.EntityFrameworkCore.Queriers
                             JobId = a.JobId,
                             JobName = c.Title,
                             PhoneNumber = a.PhoneNumber,
+                            ExtensionNumber = a.ExtensionNumber,
                             CreationTime = a.CreationTime,
                             CreatorUserId = a.CreatorUserId,
                             CreatorUserName = d.FullName,
@@ -214,12 +215,9 @@ namespace TalentPool.EntityFrameworkCore.Queriers
                         select new UncompleteResumeDto
                         {
                             Id = a.Id,
-                            PlatformName = a.PlatformName,
-                            PlatformId = a.PlatformId,
                             Name = a.Name,
                             JobId = a.JobId,
                             JobName = c.Title,
-                            PhoneNumber = a.PhoneNumber,
                             CreationTime = a.CreationTime,
                             OwnerUserId = a.OwnerUserId,
                             OwnerUserName = d.FullName,
@@ -228,6 +226,9 @@ namespace TalentPool.EntityFrameworkCore.Queriers
                             InvestigationDate = bbb == null ? (DateTime?)null : bbb.InvestigateDate,
                             AppointmentTime = bbb == null ? null : bbb.AppointmentTime,
                             AppointmentType = bbb == null ? null : bbb.AppointmentType,
+                            IsConnected = bbb == null ? null : bbb.IsConnected,
+                            AcceptTravelStatus = bbb == null ? null : bbb.AcceptTravelStatus,
+                            ExpectedInterviewDate = bbb == null ? null : bbb.ExpectedInterviewDate,
                         };
             if (ownerUserId.HasValue)
                 query = query.Where(w => w.OwnerUserId == ownerUserId);

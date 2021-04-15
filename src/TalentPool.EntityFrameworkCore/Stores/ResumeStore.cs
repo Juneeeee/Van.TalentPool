@@ -68,13 +68,13 @@ namespace TalentPool.EntityFrameworkCore.Stores
                 .FirstOrDefaultAsync(f => f.Id == resumeId, cancellationToken);
 
         }
-        public async Task<Resume> FindByPhoneNumberAsync(string phoneNumber, CancellationToken cancellationToken)
+        public async Task<Resume> FindByPhoneNumberAsync(string phoneNumber, string extensionNumber, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfDisposed();
             if (phoneNumber == null)
                 throw new ArgumentNullException(nameof(phoneNumber));
-            return await Context.Resumes.FirstOrDefaultAsync(f => f.PhoneNumber == phoneNumber, cancellationToken);
+            return await Context.Resumes.FirstOrDefaultAsync(f => f.PhoneNumber == phoneNumber && f.ExtensionNumber == extensionNumber, cancellationToken);
         }
 
         public async Task<Resume> FindByPlatformAsync(string platformId, CancellationToken cancellationToken)

@@ -222,13 +222,13 @@ namespace TalentPool.Web.Controllers
                     {
                         streamWriter.WriteLine($"{interviewGroup.Key}:{interviewGroup.Count()}个");
                         var interviewsByGroup = interviews.Where(w => w.JobName == interviewGroup.Key).ToList();
-                        streamWriter.WriteLine("姓名\t预约时间\t预约人");
+                        streamWriter.WriteLine("姓名\t预约时间");
                         foreach (var interview in interviewsByGroup)
                         {
                             if (interview.CreationTime.Date == DateTime.Today)
-                                streamWriter.WriteLine($"{interview.Name}\t{interview.AppointmentTime:yyyy/MM/dd HH:mm(当日)}\t{interview.CreatorUserName}");
+                                streamWriter.WriteLine($"{interview.Name}\t{interview.AppointmentTime:yyyy/MM/dd HH:mm(当日)}");
                             else
-                                streamWriter.WriteLine($"{interview.Name}\t{interview.AppointmentTime:yyyy/MM/dd HH:mm}\t{interview.CreatorUserName}");
+                                streamWriter.WriteLine($"{interview.Name}\t{interview.AppointmentTime:yyyy/MM/dd HH:mm}");
                         }
                         streamWriter.WriteLine("\r");
                         streamWriter.Flush();
